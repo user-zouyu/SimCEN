@@ -183,3 +183,46 @@ KKBox_x1_h5:
     test_data: ../../../data/KKBox_x1_h5/test.h5
     train_data: ../../../data/KKBox_x1_h5/train.h5
     valid_data: ../../../data/KKBox_x1_h5/valid.h5
+
+KKBox_x1_csv:
+    data_format: csv
+    data_root: ../dataset/
+    feature_cols:
+    -   active: true
+        dtype: str
+        name: [msno, song_id, source_system_tab, source_screen_name, source_type,
+            city, gender, registered_via, language]
+        type: categorical
+    - {active: true, dtype: str, encoder: MaskedSumPooling, max_len: 3, name: genre_ids,
+        type: sequence}
+    - {active: true, dtype: str, encoder: MaskedSumPooling, max_len: 3, name: artist_name,
+        type: sequence}
+    - {active: true, dtype: str, name: isrc, preprocess: extract_country_code, type: categorical}
+    - {active: true, dtype: str, name: bd, preprocess: bucketize_age, type: categorical}
+    label_col: {dtype: float, name: label}
+    min_categr_count: 2
+    test_data: ../dataset/KKBox_x1/test.csv
+    train_data: ../dataset/KKBox_x1/train.csv
+    valid_data: ../dataset/KKBox_x1/valid.csv
+
+KKBox_x1_simple:
+    data_format: csv
+    data_root: ../dataset/
+    feature_cols:
+    - {active: true, dtype: str, name: msno, type: categorical}
+    - {active: true, dtype: str, name: song_id, type: categorical}
+    - {active: true, dtype: str, name: source_system_tab, type: categorical}
+    - {active: true, dtype: str, name: source_screen_name, type: categorical}
+    - {active: true, dtype: str, name: source_type, type: categorical}
+    - {active: true, dtype: str, name: city, type: categorical}
+    - {active: true, dtype: str, name: bd, type: categorical}
+    - {active: true, dtype: str, name: gender, type: categorical}
+    - {active: true, dtype: str, name: registered_via, type: categorical}
+    - {active: true, dtype: str, name: language, type: categorical}
+    - {active: true, dtype: str, name: genre_ids, type: categorical}
+    - {active: true, dtype: str, name: artist_name, type: categorical}
+    label_col: {dtype: int, name: label}
+    min_categr_count: 1
+    test_data: ../dataset/KKBox_x1/test.csv
+    train_data: ../dataset/KKBox_x1/train.csv
+    valid_data: ../dataset/KKBox_x1/valid.csv

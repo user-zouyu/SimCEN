@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="748a6b60-d44d-498b-826f-c3b7a0fb5b77" name="Changes" comment="" />
+    <list default="true" id="748a6b60-d44d-498b-826f-c3b7a0fb5b77" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SimCEN_torch/quick_start.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SimCEN_torch/run_simcen.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/SimCEN.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SimCEN.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimCEN_torch/config/dataset_config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/SimCEN_torch/config/dataset_config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimCEN_torch/config/model_config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/SimCEN_torch/config/model_config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimCEN_torch/run_expid.py" beforeDir="false" afterPath="$PROJECT_DIR$/SimCEN_torch/run_expid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fuxictr/metrics.py" beforeDir="false" afterPath="$PROJECT_DIR$/fuxictr/metrics.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fuxictr/pytorch/models/base_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/fuxictr/pytorch/models/base_model.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,16 +29,16 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2bOpbDAbSxXlPXG5Gc8JufjFXGU" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "git-widget-placeholder": "main",
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

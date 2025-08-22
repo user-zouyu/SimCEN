@@ -1,5 +1,9 @@
 import logging
 from datetime import datetime
+import sys
+import os
+# 添加父目录到 Python 路径，以便导入本地的 fuxictr
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 from fuxictr.utils import load_config, set_logger, print_to_json, print_to_list, delete_model_files
 from fuxictr.features import FeatureMap
 from fuxictr.pytorch.torch_utils import seed_everything
@@ -8,7 +12,6 @@ from fuxictr.preprocess import FeatureProcessor, build_dataset
 import src as model_zoo
 import gc
 import argparse
-import os
 from pathlib import Path
 
 
@@ -66,4 +69,3 @@ if __name__ == '__main__':
 
     model_dir = os.path.join(params["model_root"], feature_map.dataset_id)
     delete_model_files(model_dir, params["model_id"])
-

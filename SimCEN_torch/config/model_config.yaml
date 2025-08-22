@@ -14,7 +14,7 @@ Base:
 
 SimCEN:
     model: SimCEN
-    dataset_id: Avazu_x4_h5
+    dataset_id: KKBox_x1_csv
     loss: 'binary_crossentropy'
     metrics: ['logloss', 'AUC']
     task: binary_classification
@@ -38,6 +38,69 @@ SimCEN:
     alpha: 0.01
     cl_temperature: 2.0
     epochs: 100
+    shuffle: True
+    seed: 2023
+    monitor: {'AUC': 1, 'logloss': -1}
+    monitor_mode: 'max'
+
+SimCEN_KKBox:
+    model: SimCEN
+    dataset_id: KKBox_x1_h5
+    loss: 'binary_crossentropy'
+    metrics: ['logloss', 'AUC']
+    task: binary_classification
+    optimizer: adam
+    learning_rate: 1.e-3
+    embedding_regularizer: 0
+    net_regularizer: 0
+    batch_size: 10000
+    embedding_dim: 16
+    hidden_units: [480, 480, 480]
+    ego_hidden_activations: relu
+    v1_hidden_activations: leaky_relu
+    v2_hidden_activations: relu
+    ego_batch_norm: False
+    v1_batch_norm: False
+    v2_batch_norm: False
+    through_dropout: 0.1
+    ego_dropout: 0
+    v1_dropout: 0
+    v2_dropout: 0
+    alpha: 0.01
+    cl_temperature: 2.0
+    epochs: 100
+    shuffle: True
+    seed: 2023
+    monitor: {'AUC': 1, 'logloss': -1}
+    monitor_mode: 'max'
+
+# 简化的 KKBox 配置（用于测试）
+SimCEN_simple:
+    model: SimCEN
+    dataset_id: KKBox_x1_simple
+    loss: 'binary_crossentropy'
+    metrics: ['logloss', 'AUC']
+    task: binary_classification
+    optimizer: adam
+    learning_rate: 1.e-3
+    embedding_regularizer: 0
+    net_regularizer: 0
+    batch_size: 1000  # 减小批处理大小
+    embedding_dim: 18  # 改为18，能被3整除
+    hidden_units: [48, 48, 48]  # 改为48，确保能被3整除
+    ego_hidden_activations: relu
+    v1_hidden_activations: leaky_relu
+    v2_hidden_activations: relu
+    ego_batch_norm: False
+    v1_batch_norm: False
+    v2_batch_norm: False
+    through_dropout: 0.1
+    ego_dropout: 0
+    v1_dropout: 0
+    v2_dropout: 0
+    alpha: 0.01
+    cl_temperature: 2.0
+    epochs: 3  # 先测试3个epoch
     shuffle: True
     seed: 2023
     monitor: {'AUC': 1, 'logloss': -1}

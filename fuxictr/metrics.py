@@ -27,7 +27,8 @@ def evaluate_metrics(y_true, y_pred, metrics, group_id=None):
     group_metrics = []
     for metric in metrics:
         if metric in ['logloss', 'binary_crossentropy']:
-            return_dict[metric] = log_loss(y_true, y_pred, eps=1e-7)
+            # 修复 scikit-learn 新版本兼容性问题，移除 eps 参数
+            return_dict[metric] = log_loss(y_true, y_pred)
         elif metric == 'AUC':
             return_dict[metric] = roc_auc_score(y_true, y_pred)
         elif metric in ["gAUC", "avgAUC", "MRR"] or metric.startswith("NDCG"):
@@ -109,5 +110,3 @@ class NDCG(object):
         idcg = self.dcg_score(y_true, y_true)
         dcg = self.dcg_score(y_true, y_pred)
         return dcg / (idcg + 1e-12)
-
-
