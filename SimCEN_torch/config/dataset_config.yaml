@@ -70,7 +70,7 @@ Avazu_x4_h5:
 
 Avazu_x4_csv:
     data_format: csv
-    data_root: /content/drive/MyDrive/data/
+    data_root: /content/data
     feature_cols:
         - { active: false, dtype: str, name: id, type: categorical }
         - { active: true, dtype: str, name: hour, preprocess: convert_hour, type: categorical }
