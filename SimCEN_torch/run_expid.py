@@ -4,7 +4,11 @@ from fuxictr.utils import load_config, set_logger, print_to_json, print_to_list,
 from fuxictr.features import FeatureMap
 from fuxictr.pytorch.torch_utils import seed_everything
 from fuxictr.pytorch.dataloaders import H5DataLoader
-from fuxictr.preprocess import FeatureProcessor, build_dataset
+from fuxictr.preprocess import build_dataset
+# from fuxictr.preprocess import FeatureProcessor
+from fuxictr.datasets.avazu import FeatureProcessor
+# from fuxictr.datasets.criteo import FeatureProcessor
+# from fuxictr.datasets.kkbox import FeatureProcessor
 import src as model_zoo
 import gc
 import argparse

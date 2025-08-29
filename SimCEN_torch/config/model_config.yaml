@@ -14,7 +14,7 @@ Base:
 
 SimCEN:
     model: SimCEN
-    dataset_id: Avazu_x4_h5
+    dataset_id: Avazu_x4_csv
     loss: 'binary_crossentropy'
     metrics: ['logloss', 'AUC']
     task: binary_classification
