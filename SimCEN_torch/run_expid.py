@@ -1,3 +1,6 @@
+import sys
+sys.path.append('..')
+
 import logging
 from datetime import datetime
 from fuxictr.utils import load_config, set_logger, print_to_json, print_to_list, delete_model_files
