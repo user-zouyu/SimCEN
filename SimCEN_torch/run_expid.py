@@ -8,15 +8,28 @@ from fuxictr.features import FeatureMap
 from fuxictr.pytorch.torch_utils import seed_everything
 from fuxictr.pytorch.dataloaders import H5DataLoader
 from fuxictr.preprocess import build_dataset
-# from fuxictr.preprocess import FeatureProcessor
-from fuxictr.datasets.avazu import FeatureProcessor
-# from fuxictr.datasets.criteo import FeatureProcessor
-# from fuxictr.datasets.kkbox import FeatureProcessor
+
 import src as model_zoo
 import gc
 import argparse
 import os
 from pathlib import Path
+
+
+def get_feature_encoder(**kwargs):
+
+    if kwargs['dataset_id'].lower().startswith("avazu") :
+        from fuxictr.datasets.avazu import FeatureProcessor
+        return FeatureProcessor(**kwargs)
+    elif kwargs['dataset_id'].lower().startswith("criteo") :
+        from fuxictr.datasets.criteo import FeatureProcessor
+        return FeatureProcessor(**kwargs)
+    elif kwargs['dataset_id'].lower().startswith("kkbox") :
+        from fuxictr.datasets.kkbox import FeatureProcessor
+        return FeatureProcessor(**kwargs)
+
+    from fuxictr.preprocess import FeatureProcessor
+    return FeatureProcessor(**kwargs)
 
 
 if __name__ == '__main__':
@@ -39,7 +52,7 @@ if __name__ == '__main__':
     feature_map_json = os.path.join(data_dir, "feature_map.json")
     if params["data_format"] == "csv":
         # Build feature_map and transform h5 data
-        feature_encoder = FeatureProcessor(**params)
+        feature_encoder = get_feature_encoder(**params)
         params["train_data"], params["valid_data"], params["test_data"] = \
             build_dataset(feature_encoder, **params)
     feature_map = FeatureMap(params['dataset_id'], data_dir)
