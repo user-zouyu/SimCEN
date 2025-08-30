@@ -106,9 +106,9 @@ Criteo_x4_csv:
         type: categorical
     label_col: {dtype: float, name: Label}
     min_categr_count: 2
-    test_data: /content/drive/MyDrive/datasets/Criteo_x4_csv/test.csv
-    train_data: /content/drive/MyDrive/datasets/data/Criteo_x4_csv/train.csv
-    valid_data: /content/drive/MyDrive/datasets/Criteo_x4_csv/valid.csv
+    test_data: /content/datasets/Criteo_x4_csv/test.csv
+    train_data: /content/datasets/data/Criteo_x4_csv/train.csv
+    valid_data: /content/datasets/Criteo_x4_csv/valid.csv
 
 Criteo_x4_h5:
     data_format: h5
