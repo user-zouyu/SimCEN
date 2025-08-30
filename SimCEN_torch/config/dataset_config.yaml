@@ -88,6 +88,28 @@ Avazu_x4_csv:
     train_data: /content/drive/MyDrive/datasets/Avazu_x4/train.csv
     valid_data: /content/drive/MyDrive/datasets/Avazu_x4/valid.csv
 
+Criteo_x4_csv:
+    data_format: csv
+    data_root: /content/data
+    feature_cols:
+    -   active: true
+        dtype: float
+        fill_na: 0
+        name: [I1, I2, I3, I4, I5, I6, I7, I8, I9, I10, I11, I12, I13]
+        preprocess: convert_to_bucket
+        type: categorical
+    -   active: true
+        dtype: str
+        fill_na: ''
+        name: [C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13, C14, C15, C16,
+            C17, C18, C19, C20, C21, C22, C23, C24, C25, C26]
+        type: categorical
+    label_col: {dtype: float, name: Label}
+    min_categr_count: 2
+    test_data: /content/drive/MyDrive/datasets/Criteo_x4_csv/test.csv
+    train_data: /content/drive/MyDrive/datasets/data/Criteo_x4_csv/train.csv
+    valid_data: /content/drive/MyDrive/datasets/Criteo_x4_csv/valid.csv
+
 Criteo_x4_h5:
     data_format: h5
     data_root: ../../../data/
