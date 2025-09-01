@@ -16,6 +16,7 @@
 
 import os
 import logging
+from datetime import datetime
 import logging.config
 import yaml
 import glob
@@ -29,6 +30,7 @@ def load_config(config_dir, experiment_id):
     data_params = load_dataset_config(config_dir, params['dataset_id'])
     params.update(data_params)
     return params
+
 
 def load_model_config(config_dir, experiment_id):
     model_configs = glob.glob(os.path.join(config_dir, "model_config.yaml"))
@@ -53,6 +55,7 @@ def load_model_config(config_dir, experiment_id):
     params["model_id"] = experiment_id
     return params
 
+
 def load_dataset_config(config_dir, dataset_id):
     params = {"dataset_id": dataset_id}
     dataset_configs = glob.glob(os.path.join(config_dir, "dataset_config.yaml"))
@@ -66,21 +69,24 @@ def load_dataset_config(config_dir, dataset_id):
                 return params
     raise RuntimeError(f'dataset_id={dataset_id} is not found in config.')
 
+
 def set_logger(params):
     dataset_id = params['dataset_id']
     model_id = params.get('model_id', '')
     log_dir = os.path.join(params.get('model_root', './checkpoints'), dataset_id)
     os.makedirs(log_dir, exist_ok=True)
-    log_file = os.path.join(log_dir, model_id + '.log')
+    now = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+    log_file = os.path.join(log_dir, model_id + '_' + now + '.log')
 
     # logs will not show in the file without the two lines.
-    for handler in logging.root.handlers[:]: 
+    for handler in logging.root.handlers[:]:
         logging.root.removeHandler(handler)
-        
+
     logging.basicConfig(level=logging.INFO,
                         format='%(asctime)s P%(process)d %(levelname)s %(message)s',
                         handlers=[logging.FileHandler(log_file, mode='w'),
                                   logging.StreamHandler()])
+
 
 def print_to_json(data, sort_keys=True):
     new_data = dict((k, str(v)) for k, v in data.items())
@@ -88,8 +94,10 @@ def print_to_json(data, sort_keys=True):
         new_data = OrderedDict(sorted(new_data.items(), key=lambda x: x[0]))
     return json.dumps(new_data, indent=4)
 
+
 def print_to_list(data):
     return ' - '.join('{}: {:.6f}'.format(k, v) for k, v in data.items())
+
 
 class Monitor(object):
     def __init__(self, kv):
@@ -106,6 +114,7 @@ class Monitor(object):
     def get_metrics(self):
         return list(self.kv_pairs.keys())
 
+
 def load_h5(data_path, verbose=0):
     if verbose == 0:
         logging.info('Loading data from h5: ' + data_path)
@@ -114,6 +123,7 @@ def load_h5(data_path, verbose=0):
         for key in hf.keys():
             data_dict[key] = hf[key][:]
     return data_dict
+
 
 def delete_model_files(model_dir, model_name):
     # # Create the path to search for model files
