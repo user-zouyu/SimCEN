@@ -1,4 +1,5 @@
 Base:
+    log_root: /content/drive/MyDrive/logs/
     model_root: './checkpoints/'
     num_workers: 4
     verbose: 1

@@ -73,10 +73,11 @@ def load_dataset_config(config_dir, dataset_id):
 def set_logger(params):
     dataset_id = params['dataset_id']
     model_id = params.get('model_id', '')
-    log_dir = os.path.join(params.get('model_root', './checkpoints'), dataset_id)
+    log_dir = os.path.join(params.get('log_root', './logs'), dataset_id)
     os.makedirs(log_dir, exist_ok=True)
     now = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-    log_file = os.path.join(log_dir, model_id + '_' + now + '.log')
+    log_file = model_id + '_' + now + '.log'
+    log_file = os.path.join(log_dir, log_file)
 
     # logs will not show in the file without the two lines.
     for handler in logging.root.handlers[:]:
