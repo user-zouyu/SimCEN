@@ -85,7 +85,7 @@ class DCNv2(BaseModel):
 
     def forward(self, inputs):
         X = self.get_inputs(inputs)
-        feature_emb = self.embedding_layer(X, flatten_emb=True)
+        feature_emb = self.embedding_layer(X, dynamic_emb_dim=True)
         cross_out = self.crossnet(feature_emb)
         if self.model_structure == "crossnet_only":
             final_out = cross_out
