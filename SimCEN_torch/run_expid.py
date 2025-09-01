@@ -3,7 +3,7 @@ sys.path.append('..')
 
 import logging
 from datetime import datetime
-from fuxictr.utils import load_config, set_logger, print_to_json, print_to_list, delete_model_files
+from fuxictr.utils import load_config, set_logger, print_to_json, print_to_list, delete_model_files, create_checkpoint_dir
 from fuxictr.features import FeatureMap
 from fuxictr.pytorch.torch_utils import seed_everything
 from fuxictr.pytorch.dataloaders import H5DataLoader
@@ -45,6 +45,7 @@ if __name__ == '__main__':
     params = load_config(args['config'], experiment_id)
     params['gpu'] = args['gpu']
     set_logger(params)
+    create_checkpoint_dir(params)
     logging.info("Params: " + print_to_json(params))
     seed_everything(seed=params['seed'])
 
