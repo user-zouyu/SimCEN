@@ -69,6 +69,12 @@ def load_dataset_config(config_dir, dataset_id):
                 return params
     raise RuntimeError(f'dataset_id={dataset_id} is not found in config.')
 
+def create_checkpoint_dir(params):
+    dataset_id = params['dataset_id']
+    model_id = params.get('model_id')
+    checkpoint_dir = os.path.join(params.get('model_root', './checkpoints'), dataset_id)
+    checkpoint_dir = os.path.join(checkpoint_dir, model_id)
+    os.makedirs(checkpoint_dir, exist_ok=True)
 
 def set_logger(params):
     dataset_id = params['dataset_id']
