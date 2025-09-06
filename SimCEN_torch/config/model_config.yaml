@@ -44,6 +44,63 @@ SimCEN:
     monitor: {'AUC': 1, 'logloss': -1}
     monitor_mode: 'max'
 
+HRM:
+    model: HRM
+    dataset_id: KKBox_x1_csv
+    loss: 'binary_crossentropy'
+    metrics: ['logloss', 'AUC']
+    task: binary_classification
+    optimizer: adam
+    learning_rate: 1.e-3
+    embedding_regularizer: 0
+    net_regularizer: 0
+    batch_size: 1280
+    embedding_dim: 16
+    batch_norm: True
+    layers:
+      - high:
+          hidden_units: [ 256 ]
+          hidden_activations: relu
+
+        low:
+          hidden_units: [ 64, 128, 256 ]
+          hidden_activations: relu
+#      - high:
+#          hidden_units: [ 256 ]
+#          hidden_activations: relu
+#        low:
+#          hidden_units: [ 256, 512, 256 ]
+#          hidden_activations: relu
+      - high:
+          hidden_units: [ 64 ]
+          hidden_activations: relu
+        low:
+          hidden_units: [ 256, 128, 64 ]
+          hidden_activations: relu
+    fc:
+      hidden_units: [64, 32, 1]
+      hidden_activations: relu
+      batch_norm: False
+      output_dim: 1
+    ego_hidden_activations: relu
+    v1_hidden_activations: leaky_relu
+    v2_hidden_activations: relu
+    ego_batch_norm: False
+    v1_batch_norm: False
+    v2_batch_norm: False
+    through_dropout: 0.1
+    ego_dropout: 0
+    v1_dropout: 0
+    v2_dropout: 0
+    alpha: 0.01
+    cl_temperature: 2.0
+    dropout_rate: 0.1
+    epochs: 20
+    shuffle: True
+    seed: 2023
+    monitor: {'AUC': 1, 'logloss': -1}
+    monitor_mode: 'max'
+
 AutoInt_test:
     model: AutoInt
     dataset_id: KKBox_x1_csv
