@@ -20,11 +20,11 @@ class HRM_Block(nn.Module):
         hidden_units = [input_dim] + hidden_units
         for i in range(len(hidden_units) - 1):
             self.layers.append(nn.Linear(hidden_units[i], hidden_units[i + 1]))
+            if dropout_rate > 0:
+                self.layers.append(nn.Dropout(dropout_rate))
             if hidden_activations[i]:
                 self.layers.append(hidden_activations[i])
 
-        if dropout_rate > 0:
-            self.layers.append(nn.Dropout(dropout_rate))
 
     def forward(self, x):
         for layer in self.layers:

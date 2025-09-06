@@ -59,22 +59,23 @@ HRM:
     batch_norm: True
     layers:
       - high:
-          hidden_units: [ 512 ]
-          hidden_activations: relu
-        low:
-          hidden_units: [ 2048, 1024, 512 ]
-          hidden_activations: relu
-      - high:
           hidden_units: [ 256 ]
           hidden_activations: relu
+
         low:
-          hidden_units: [ 1024, 512, 256 ]
+          hidden_units: [ 64, 128, 256 ]
           hidden_activations: relu
+#      - high:
+#          hidden_units: [ 256 ]
+#          hidden_activations: relu
+#        low:
+#          hidden_units: [ 256, 512, 256 ]
+#          hidden_activations: relu
       - high:
-          hidden_units: [ 128 ]
+          hidden_units: [ 64 ]
           hidden_activations: relu
         low:
-          hidden_units: [ 512, 256, 128 ]
+          hidden_units: [ 256, 128, 64 ]
           hidden_activations: relu
     fc:
       hidden_units: [64, 32, 1]
