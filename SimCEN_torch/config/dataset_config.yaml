@@ -242,7 +242,7 @@ KKBox_x1_csv:
     - {active: true, dtype: str, name: isrc, preprocess: extract_country_code, type: categorical}
     - {active: true, dtype: str, name: bd, preprocess: bucketize_age, type: categorical}
     label_col: {dtype: float, name: label}
-    min_categr_count: 2
+    min_categr_count: 10
     test_data: /content/datasets/KKBox_x1/test.csv
     train_data: /content/datasets/KKBox_x1/train.csv
     valid_data: /content/datasets/KKBox_x1/valid.csv
