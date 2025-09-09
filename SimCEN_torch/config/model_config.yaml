@@ -215,7 +215,7 @@ DR_QMoE_ML_1M:
 
 DR_QMoE_KKBox:
     model: DR_QMoE
-    dataset_id: KKBox_csv
+    dataset_id: KKBox_x1_csv
     loss: 'binary_crossentropy'
     metrics: ['logloss', 'AUC']
     task: binary_classification
