@@ -185,6 +185,31 @@ DR_QMoE_iPinYou:
     monitor: {'AUC': 1, 'logloss': 0}
     monitor_mode: 'max'
 
+DR_QMoE_Criteo_x4_csv:
+    model: DR_QMoE
+    dataset_id: Criteo_x4_csv
+    loss: 'binary_crossentropy'
+    metrics: ['logloss', 'AUC']
+    task: binary_classification
+    optimizer: adam
+    learning_rate: 1.e-3
+    embedding_regularizer: 1.e-3
+    net_regularizer: 0
+    batch_size: 10000
+    embedding_dim: 16
+    num_layers: 1
+    num_experts: 4
+    top_k: 2
+    expert_capacity_factor: 1.0
+    load_balance_weight: 0.01
+    expert_dropout: 0.1
+    net_dropout: 0.1
+    batch_norm: True
+    epochs: 100
+    shuffle: True
+    seed: 2024
+    monitor: {'AUC': 1, 'logloss': 0}
+    monitor_mode: 'max'
 
 DR_QMoE_ML_1M:
     model: DR_QMoE
